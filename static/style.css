@@ -1,0 +1,255 @@
+/* Reset and basic styling */
+html {
+    box-sizing: border-box;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    font-family: 'Comfortaa', cursive;
+    background-color: #189952;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling */
+    user-select: none; /* Disable text selection */
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Sections */
+  section {
+    background: #189952;
+    background: -webkit-linear-gradient(to right, #189952, #ffff);
+    background: linear-gradient(to right, #189952, #ffff);
+    padding-top: 80px;
+    overflow-y: hidden; /* Hide overflow */
+  }
+  
+  main {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 5px 20px 50px;
+    width: 95%;
+    max-width: 500px;
+    margin: 0 auto 214px; /* Adjust margin as needed */
+  }
+  
+  .text-container {
+    text-align: center;
+  }
+  
+  /* Quiz options styling */
+  .quiz-options {
+    margin: 60px 0;
+  }
+  
+  [type=radio] {
+    display: none; /* Hide radio inputs */
+  }
+  
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    background: rgba(255, 5, 5, 0.72);
+    margin-bottom: 15px;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  label:hover {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  label .alphabet {
+    border-radius: 5px;
+    border: solid 1px #000;
+    padding: .4rem .5rem .4rem;
+    width: 2.3rem;
+    margin: 0 1.3rem 0 .7rem;
+    display: flex;
+    justify-content: center;
+    color: #000;
+  }
+  
+  label .icon {
+    position: absolute;
+    right: 10px;
+  }
+  
+  /* Selected and correct answers */
+  input:checked+label {
+    background-color: rgb(76, 245, 194);
+    font-weight: bold;
+    text-transform: uppercase;
+    -webkit-text-stroke: 0.6px #fff;
+  }
+  
+  input:checked+label .alphabet {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  /* Animations */
+  @keyframes flash {
+    0%, 49% {
+      background-color: #4cf5c2;
+    }
+    50%, 100% {
+      background-color: #000;
+    }
+  }
+  
+  .one-a:checked+label,
+  .two-c:checked+label,
+  .three-c:checked+label,
+  .four-b:checked+label,
+  .five-a:checked+label {
+    animation: flash 0.6s infinite;
+  }
+  
+  /* Button styling */
+  #btn {
+    border: 1px solid #000;
+    border-radius: 50px;
+    background: rgb(247, 206, 206);
+    color: #000;
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 57%;
+    margin: 20px auto 0;
+    padding: 11px 0;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  
+  #btn:hover {
+    background-color: rgba(255, 255, 255, 0.671);
+    color: rgba(0, 0, 0, 0.749);
+    border-color: #000;
+  }
+  
+  /* Score counter */
+  .score-counter {
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    width: 210px;
+    height: 9%;
+    background: rgba(0, 0, 0, 0.749);
+    border: 4px solid #000;
+    position: fixed;
+    top: 5px;
+    right: 10px;
+    box-shadow: inset 2px -2px 9px #020202, inset -2px 2px 9px #d2d2d2;
+  }
+  
+  .score-text {
+    margin: 0 20px;
+  }
+  
+  .score-counter::after {
+    content: counter(points) "/5";
+  }
+  
+  /* Game over screen */
+  #game-over {
+    background: linear-gradient(rgb(28, 22, 49), rgba(18, 18, 25, 0.9)), repeating-linear-gradient(0, transparent, transparent 2px, black 3px, black 3px);
+    font-family: 'Bungee', cursive;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .game-over-content {
+    display: grid;
+    justify-items: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 120px 0;
+  }
+  
+  #game-over h1 {
+    background: url("https://res.cloudinary.com/dvhndpbun/image/upload/e_brightness:-20/v1588605696/01-01_web_designers_code_ld_img_dgytil.png");
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: contain;
+    font-size: 5rem;
+    line-height: 1.2;
+    margin: 0;
+    position: relative;
+  }
+  
+  h1::before {
+    content: attr(data-heading);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0) 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    mix-blend-mode: screen;
+    animation: shine 1s infinite;
+    background-size: 200%;
+    text-shadow: 2px 2px 10px rgba(#000, 0.2), -2px 2px 10px rgba(#000, 0.2), -2px -2px 10px rgba(#000, 0.2);
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 420px) {
+    body {
+      font-size: 0.8rem;
+    }
+  
+    main {
+      width: 92%;
+    }
+  
+    label {
+      font-size: 0.71rem;
+    }
+  
+    label .alphabet {
+      margin: 0 0.9rem 0 0.7rem;
+    }
+  
+    #game-over h1 {
+      font-size: 3rem;
+    }
+  
+    .score-counter {
+      width: 120px;
+      height: 5%;
+      font-size: 0.7rem;
+    }
+  }
+  
+  @media (max-width: 325px) {
+    label {
+      font-size: 0.63rem;
+    }
+  
+    label .alphabet {
+      margin: 0 0.55rem 0 0.7rem;
+    }
+  }
+  
+
